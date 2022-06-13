@@ -16,7 +16,10 @@ func main() {
 	db := app.NewDB()
 	validate := validator.New()
 	categoryRepository := repository.NewCategoryRepository()
+	// constructor categoryService, dependency categoryRepostory, db, validate
 	categoryService := service.NewCategoryService(categoryRepository, db, validate)
+
+	// constructor categoryController, dependency categoryService
 	categoryController := controller.NewCategoryController(categoryService)
 	router := app.NewRouter(categoryController)
 
